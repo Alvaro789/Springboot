@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Creación de Incidencias</title>
+</head>
+<body>
+    <p style="text-align: center;">
+        <a href="/">Volver al inicio</a>
+    </p>
+    <h1>Formulario de Creación de Incidencias</h1>
+    <form action="#" th:action="@{/crearIncidencia}" th:object="${incidencia}" method="post">
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" th:field="*{cliente}" required><br><br>
+
+        <label for="interlocutor">Interlocutor:</label>
+        <input type="text" id="interlocutor" name="interlocutor" th:field="*{interlocutor}" required><br><br>
+
+        <label for="descripcionProblema">Descripción del Problema:</label><br>
+        <textarea id="descripcionProblema" name="descripcionProblema" th:field="*{descripcionProblema}" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="estadoActual">Estado Actual:</label>
+        <select id="estadoActual" name="estadoActual" th:field="*{estadoActual}" required>
+            <option value="">Seleccione un estado</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="enproceso">En proceso</option>
+            <option value="resuelta">Resuelta</option>
+            <option value="cerrada">Cerrada</option>
+        </select><br><br>
+       
+
+        <label for="comentarios">Comentarios:</label><br>
+        <textarea id="comentarios" name="comentarios" th:field="*{comentarios}" rows="4" cols="50"></textarea><br><br>
+
+        <label for="prioridad">Prioridad:</label>
+        <select id="prioridad" name="prioridad" th:field="*{prioridad}" required>
+            <option value="">Seleccione una prioridad</option>
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+        </select><br><br>
+
+        <label for="asignadoA">Asignado a:</label>
+        <input type="text" id="asignadoA" name="asignadoA" th:field="*{asignadoA}" required><br><br>
+
+        
+
+        <label for="adjuntos">Adjuntos:</label>
+        <input type="file" id="adjuntos" name="adjuntos" multiple><br><br>
+
+        <button type="submit">Crear Incidencia</button>
+        <li><a href="/verIncidencias">Ver Incidencias</a></li>
+        
+    </form>
+</body>
+</html>
+
