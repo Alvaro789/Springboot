@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Incidencias</title>
+</head>
+<body>
+    <p style="text-align: center;">
+        <a href="/">Volver al inicio</a>
+    </p>
+    <h1>Lista de Incidencias</h1>
+    <table border="1">
+        <tr>
+            
+            <th>Cliente</th>
+            <th>Interlocutor</th>
+            <th>Descripción del Problema</th>
+            <th>Fecha de Creación</th>
+            <th>Estado Actual</th>
+            <th>Comentarios</th>
+            <th>Prioridad</th>
+            <th>Asignado a</th>
+            <th>Fecha de Resolución</th>
+            <th>Adjuntos</th>
+        </tr>
+        <tr th:each="incidencia : ${incidencias}">
+            
+            <td th:text="${incidencia.cliente}"></td>
+            <td th:text="${incidencia.interlocutor}"></td>
+            <td th:text="${incidencia.descripcionProblema}"></td>
+            <td th:text="${#dates.format(incidencia.fechaCreacion, 'dd/MM/yyyy HH:mm')}"></td>
+            <td th:text="${incidencia.estadoActual}"></td>
+            <td th:text="${incidencia.comentarios}"></td>
+            <td th:text="${incidencia.prioridad}"></td>
+            <td th:text="${incidencia.asignadoA}"></td>
+            <td th:text="${#dates.format(incidencia.fechaResolucion, 'dd/MM/yyyy HH:mm')}"></td>
+            <td>
+                <ul>
+                    <li th:each="adjunto : ${incidencia.adjuntos}" th:text="${adjunto}"></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <li><a href="/formulario">Crear Nueva Incidencia</a></li>
+    
+</body>
+</html>
