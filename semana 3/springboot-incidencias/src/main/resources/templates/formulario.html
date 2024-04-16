@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Creación de Incidencias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <p style="text-align: center;">
+        <a href="/">Volver al inicio</a>
+    </p>
+    <h1>Formulario de Creación de Incidencias</h1>
+    <form action="#" th:action="@{/crearIncidencia}" th:object="${incidencia}" method="post">
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" th:field="*{cliente}" required>
+
+        <label for="interlocutor">Interlocutor:</label>
+        <input type="text" id="interlocutor" name="interlocutor" th:field="*{interlocutor}" required>
+
+        <label for="descripcionProblema">Descripción del Problema:</label>
+        <textarea id="descripcionProblema" name="descripcionProblema" th:field="*{descripcionProblema}" rows="4" cols="50" required></textarea>
+
+        <label for="estadoActual">Estado Actual:</label>
+        <select id="estadoActual" name="estadoActual" th:field="*{estadoActual}" required>
+            <option value="">Seleccione un estado</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="enproceso">En proceso</option>
+            <option value="resuelta">Resuelta</option>
+            <option value="cerrada">Cerrada</option>
+        </select>
+
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" name="comentarios" th:field="*{comentarios}" rows="4" cols="50"></textarea>
+
+        <label for="prioridad">Prioridad:</label>
+        <select id="prioridad" name="prioridad" th:field="*{prioridad}" required>
+            <option value="">Seleccione una prioridad</option>
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+        </select>
+
+        <label for="asignadoA">Asignado a:</label>
+        <select id="asignadoA" name="asignadoA" th:field="*{asignadoA}" required>
+            <option value="">Asigando a:</option>
+            <option value="pepe">Pepe</option>
+            <option value="alberto">Alberto</option>
+            <option value="marta">Marta</option>
+            <option value="luis">Luis</option>
+        </select>
+
+
+
+        <label for="adjuntos">Adjuntos:</label>
+        <input type="file" id="adjuntos" name="adjuntos" multiple>
+
+        <button type="submit">Crear Incidencia</button>
+    </form>
+    <p style="text-align: center;">
+        <a href="/verIncidencias">Ver Incidencias</a>
+    </p>
+</body>
+</html>
